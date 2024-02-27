@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arduino-platform: ["raspberry_pi_pico", "feather_rp2040_tinyusb"]
+        arduino-platform: ["pico_rp2040_tinyusb"]
     runs-on: ubuntu-latest
     
     steps:
