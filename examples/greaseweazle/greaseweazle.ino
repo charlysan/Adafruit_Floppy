@@ -166,7 +166,7 @@ void setup() {
   Serial.begin(115200);
   Serial1.begin(115200);
   //while (!Serial) delay(100);
-  Serial1.println("GrizzlyWizzly - test");
+  Serial1.println("GrizzlyWizzly - test.");
 
   timestamp = millis();
 
