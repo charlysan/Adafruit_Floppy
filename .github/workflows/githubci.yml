@@ -62,30 +62,3 @@ jobs:
         fail_on_unmatched_files: false
         body: "Select the zip file corresponding to your board from the list below."
 
-  doxyclang:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/setup-python@v1
-      with:
-        python-version: '3.x'
-    - uses: actions/checkout@v2
-    - uses: actions/checkout@v2
-      with:
-         repository: adafruit/ci-arduino
-         path: ci
-
-    - name: pre-install
-      run: bash ci/actions_install.sh
-
-    - name: fix SDFat
-      run: git clone --quiet https://github.com/adafruit/SdFat.git /home/runner/Arduino/libraries/SdFat
-
-    - name: clang
-      run: python3 ci/run-clang-format.py -e "ci/*" -e "bin/*" -r . 
-
-    - name: doxygen
-      env:
-        GH_REPO_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
-        PRETTYNAME : "Adafruit Floppy Interface Library"
-      run: bash ci/doxy_gen_and_deploy.sh
